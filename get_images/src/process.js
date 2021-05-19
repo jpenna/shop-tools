@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { PRODUCTS_URL_PATH, MAX_DELAY } from './consts.js';
+import { PRODUCTS_URL_PATH, MAX_DELAY, MAX_CONCURRENT } from './consts.js';
 
 const urls = fs.readFileSync(PRODUCTS_URL_PATH).toString();
 const urlQueue = urls.split('\n');
@@ -20,13 +20,14 @@ const processInTurn = async (myTurn, handler, page) => {
   });
 };
 
-export const processNext = async (handler, fetcher) => {
+const processNext = async (handler, fetcher) => {
   if (!urlQueue.length || !flags.continue) {
     return;
   }
   const myTurn = turn++;
 
   const url = urlQueue.shift();
+  if (!url) return;
 
   console.log(`Starting ${myTurn}...`, url);
 
@@ -48,4 +49,10 @@ export const processNext = async (handler, fetcher) => {
     () => processNext(handler, fetcher),
     Math.floor(Math.random() * MAX_DELAY),
   );
+};
+
+export const startProcessing = (handler, fetchPage) => {
+  for (let i = 0; i < MAX_CONCURRENT; i++) {
+    processNext(handler, fetchPage);
+  }
 };

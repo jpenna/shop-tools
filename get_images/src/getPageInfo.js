@@ -1,10 +1,10 @@
 import fs from 'fs';
 import {
-  PRICES_URL_PATH, MAX_CONCURRENT, IMAGES_URL_PATH, OUTPUT_PATH,
+  PRICES_PATH, IMAGES_URL_PATH, OUTPUT_PATH,
 } from './consts.js';
 import { fetchPage } from './fetch.js';
 import { buildJSON } from './helpers.js';
-import { processNext, flags } from './process.js';
+import { startProcessing, flags } from './process.js';
 
 let imagesFd = null;
 let pricesFd = null;
@@ -62,7 +62,7 @@ const handler = async (page) => {
 export const run = (scope) => {
   fs.mkdir(OUTPUT_PATH, () => {
     if (scope === 'prices' || !scope) {
-      pricesFd = fs.openSync(PRICES_URL_PATH, 'w+');
+      pricesFd = fs.openSync(PRICES_PATH, 'w+');
     }
 
     if (scope === 'images' || !scope) {
@@ -70,9 +70,7 @@ export const run = (scope) => {
     }
 
     if (pricesFd || imagesFd) {
-      for (let i = 0; i < MAX_CONCURRENT; i++) {
-        processNext(handler, fetchPage);
-      }
+      startProcessing(handler, fetchPage);
     } else {
       throw new Error('Acceptable scopes are only `prices` or `images` or nothing');
     }

@@ -6,7 +6,8 @@
   "scripts": {
     "images": "node index images",
     "prices": "node index prices",
-    "prices-images": "node index prices-images"
+    "prices-images": "node index prices-images",
+    "freight": "node index freight"
   },
   "author": "",
   "license": "ISC",

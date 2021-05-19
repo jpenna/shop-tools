@@ -5,23 +5,20 @@
         },
         "freightResult": [
             {
-                "bizShowMind": {
-                    "layout": []
-                },
                 "commitDay": "90",
-                "company": "AliExpress Standard Shipping",
+                "company": "Aliexpress Direct",
                 "currency": "USD",
-                "deliveryDate": "2021-06-18",
+                "deliveryDate": "2021-06-29",
                 "deliveryDateCopy": "Estimativa de Entrega: {0}",
-                "deliveryDateDisplay": "2021-06-18",
-                "deliveryDateFormat": "18 Jun.",
-                "discount": 30,
+                "deliveryDateDisplay": "2021-06-29",
+                "deliveryDateFormat": "29 Jun.",
+                "discount": 100,
                 "displayType": "deliveryDate",
                 "features": {},
                 "freightAmount": {
                     "currency": "USD",
-                    "formatedAmount": "US $4.72",
-                    "value": 4.72
+                    "formatedAmount": "US $0.00",
+                    "value": 0.0
                 },
                 "freightFeatures": {
                     "provider": "cainiao"
@@ -30,7 +27,85 @@
                     "displayType": "deliveryDate",
                     "layout": [
                         {
-                            "text": "Frete: US $4.72 (Cerca de R$ 26,64)",
+                            "text": "Frete Grátis",
+                            "type": "title"
+                        },
+                        {
+                            "text": "<font color='#FF9A00'>Frete grátis! Obtenha US$2 Off nos pedidos acima de US$10 com o cupom \"10MENOS2\"!</font>",
+                            "type": "subtitle"
+                        },
+                        {
+                            "text": "Para <font color='#000000'>Brazil</font> via Aliexpress Direct",
+                            "type": "subtitle"
+                        },
+                        {
+                            "text": "Estimativa de entrega: <font color='#000000'>29 Jun.</font>",
+                            "type": "subtitle"
+                        }
+                    ],
+                    "openShippingPanel": "true"
+                },
+                "fullMailLine": true,
+                "fullMailLineSwitchNotice": "LIVRE 30-50 dia de entrega para encomendas superiores a US $ 15 não está disponível para o transporte método que você está mudando para\n",
+                "fullMailNotice": "Frete grátis! Obtenha US$2 Off nos pedidos acima de US$10 com o cupom \"10MENOS2\"!",
+                "hbaService": true,
+                "i18nMap": {},
+                "id": 0,
+                "ltDisplayModel": {
+                    "serviceInfo": [
+                        {
+                            "description": "Rastreamento Disponível"
+                        },
+                        {
+                            "description": "Cupom: 10MENOS2"
+                        }
+                    ]
+                },
+                "matchFullMail": false,
+                "name": "FreightItemModule",
+                "previewFreightAmount": {
+                    "currency": "BRL",
+                    "formatedAmount": "R$ 0,00",
+                    "value": 0.0
+                },
+                "sendGoodsCountry": "CN",
+                "sendGoodsCountryFullName": "China",
+                "serviceName": "CAINIAO_CONSOLIDATION_BR",
+                "standardFreightAmount": {
+                    "currency": "USD",
+                    "formatedAmount": "US $0.00",
+                    "value": 0.0
+                },
+                "time": "41-41",
+                "tracking": true
+            },
+            {
+                "bizShowMind": {
+                    "layout": []
+                },
+                "commitDay": "90",
+                "company": "AliExpress Standard Shipping",
+                "currency": "USD",
+                "deliveryDate": "2021-06-19",
+                "deliveryDateCopy": "Estimativa de Entrega: {0}",
+                "deliveryDateDisplay": "2021-06-19",
+                "deliveryDateFormat": "19 Jun.",
+                "discount": 0,
+                "displayType": "deliveryDate",
+                "features": {},
+                "freightAmount": {
+                    "currency": "USD",
+                    "formatedAmount": "US $3.74",
+                    "value": 3.74
+                },
+                "freightFeatures": {
+                    "provider": "cainiao"
+                },
+                "freightLayout": {
+                    "displayType": "deliveryDate",
+                    "layout": [
+                        {
+                            "text": "Frete: US $3.74 (Cerca de R$ 21,11)",
                             "type": "title"
                         },
                         {
@@ -38,7 +113,7 @@
                             "type": "subtitle"
                         },
                         {
-                            "text": "Estimativa de entrega: <font color='#000000'>18 Jun.</font>",
+                            "text": "Estimativa de entrega: <font color='#000000'>19 Jun.</font>",
                             "type": "subtitle"
                         },
                         {
@@ -55,18 +130,83 @@
                 "name": "FreightItemModule",
                 "previewFreightAmount": {
                     "currency": "BRL",
-                    "formatedAmount": "R$ 26,64",
-                    "value": 26.64
+                    "formatedAmount": "R$ 21,11",
+                    "value": 21.11
                 },
                 "sendGoodsCountry": "CN",
                 "sendGoodsCountryFullName": "China",
                 "serviceName": "CAINIAO_STANDARD",
                 "standardFreightAmount": {
                     "currency": "USD",
-                    "formatedAmount": "US $4.72",
-                    "value": 4.72
+                    "formatedAmount": "US $3.74",
+                    "value": 3.74
                 },
                 "time": "31-31",
+                "tracking": true
+            },
+            {
+                "bizShowMind": {
+                    "layout": []
+                },
+                "commitDay": "90",
+                "company": "DHL",
+                "currency": "USD",
+                "deliveryDate": "2021-07-09",
+                "deliveryDateCopy": "Estimativa de Entrega: {0}",
+                "deliveryDateDisplay": "2021-07-09",
+                "deliveryDateFormat": "09 Jul.",
+                "discount": 0,
+                "displayType": "deliveryDate",
+                "features": {},
+                "freightAmount": {
+                    "currency": "USD",
+                    "formatedAmount": "US $173.94",
+                    "value": 173.94
+                },
+                "freightFeatures": {
+                    "provider": "ae_config"
+                },
+                "freightLayout": {
+                    "displayType": "deliveryDate",
+                    "layout": [
+                        {
+                            "text": "Frete: US $173.94 (Cerca de R$ 981,60)",
+                            "type": "title"
+                        },
+                        {
+                            "text": "Para <font color='#000000'>Brazil</font> via DHL",
+                            "type": "subtitle"
+                        },
+                        {
+                            "text": "Estimativa de entrega: <font color='#000000'>09 Jul.</font>",
+                            "type": "subtitle"
+                        },
+                        {
+                            "text": "Rastreamento Disponível",
+                            "type": "subtitle"
+                        }
+                    ],
+                    "openShippingPanel": "true"
+                },
+                "fullMailLine": false,
+                "hbaService": false,
+                "i18nMap": {},
+                "id": 0,
+                "name": "FreightItemModule",
+                "previewFreightAmount": {
+                    "currency": "BRL",
+                    "formatedAmount": "R$ 981,60",
+                    "value": 981.6
+                },
+                "sendGoodsCountry": "CN",
+                "sendGoodsCountryFullName": "China",
+                "serviceName": "DHL",
+                "standardFreightAmount": {
+                    "currency": "USD",
+                    "formatedAmount": "US $173.94",
+                    "value": 173.94
+                },
+                "time": "14-38",
                 "tracking": true
             }
         ],
@@ -74,6 +214,6 @@
         "name": "LogisticsFreightResp"
     },
     "code": 200,
-    "cost": 32,
+    "cost": 27,
     "success": true
 }
