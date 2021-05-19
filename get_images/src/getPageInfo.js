@@ -1,13 +1,10 @@
-const fs = require('fs');
-const { fetchPage } = require('./fetch');
-const { buildJSON } = require('./helpers');
-const { processNext, flags } = require('./process');
-
-const MAX_CONCURRENT = 5; // Concurrent requests
-
-const OUTPUT_PATH = 'src/output'; // Output folder
-const IMAGES_URL_PATH = `${OUTPUT_PATH}/imageUrls`; // Output image file
-const PRICES_URL_PATH = `${OUTPUT_PATH}/prices`; // Output prices file
+import fs from 'fs';
+import {
+  PRICES_URL_PATH, MAX_CONCURRENT, IMAGES_URL_PATH, OUTPUT_PATH,
+} from './consts.js';
+import { fetchPage } from './fetch.js';
+import { buildJSON } from './helpers.js';
+import { processNext, flags } from './process.js';
 
 let imagesFd = null;
 let pricesFd = null;
@@ -15,7 +12,7 @@ let pricesFd = null;
 const getImageUrl = (page) => {
   const imageUrl = page.match(/formatRegex.test\("(.+)"/);
   return imageUrl[1];
-}
+};
 
 const saveImageUrlToFile = (imageUrl) => {
   if (!flags.continue) {
@@ -23,7 +20,7 @@ const saveImageUrlToFile = (imageUrl) => {
   }
   const line = imageUrl ? `=IMAGE("${imageUrl}", 1)\n` : '\n';
   fs.appendFileSync(imagesFd, line);
-}
+};
 
 const getPrices = (page) => {
   const priceJSON = buildJSON(page, '"priceModule":{');
@@ -31,7 +28,7 @@ const getPrices = (page) => {
   const activityPrice = priceJSON.formatedActivityPrice;
 
   return [price, activityPrice];
-}
+};
 
 const savePricesToFile = (prices) => {
   if (!flags.continue) {
@@ -39,15 +36,15 @@ const savePricesToFile = (prices) => {
   }
 
   const pricesString = prices
-    .map((price = '') =>
-      price.replace('R$ ', '')
+    .map(
+      (price = '') => price.replace('R$ ', '')
         .replace(/,/g, '.') // Use dot cents
-        .replace(' - ', ',') // Min, max
+        .replace(' - ', ','), // Min, max
     )
     .join(',');
 
   fs.appendFileSync(pricesFd, `${pricesString}\n`);
-}
+};
 
 const handler = async (page) => {
   if (imagesFd) {
@@ -59,10 +56,10 @@ const handler = async (page) => {
     const prices = getPrices(page);
     savePricesToFile(prices);
   }
-}
+};
 
 // RUN
-const run = (scope) => {
+export const run = (scope) => {
   fs.mkdir(OUTPUT_PATH, () => {
     if (scope === 'prices' || !scope) {
       pricesFd = fs.openSync(PRICES_URL_PATH, 'w+');
@@ -80,8 +77,4 @@ const run = (scope) => {
       throw new Error('Acceptable scopes are only `prices` or `images` or nothing');
     }
   });
-}
-
-module.exports = {
-  run
-}
+};

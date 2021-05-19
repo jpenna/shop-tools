@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const buildJSON = (text, objectInit) => {
+export const buildJSON = (text, objectInit) => {
   if (!text) return {};
 
   const init = text.indexOf(objectInit);
@@ -20,11 +20,7 @@ const buildJSON = (text, objectInit) => {
   return count > 0
     ? {}
     : JSON.parse(text.substring(init + objectInit.length - 1, pos));
-}
-
-module.exports = {
-  buildJSON
-}
+};
 
 // const validText = '"astring":{"build":123, "h":[123, 43, 123], "123":{"oi": "hey"}},"other"stuff}';
 // assert.deepStrictEqual(buildJSON(validText, '"astring":{'), {"build":123, "h":[123, 43, 123], '123':{"oi": "hey"}});

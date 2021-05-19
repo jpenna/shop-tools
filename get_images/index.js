@@ -1,15 +1,17 @@
+import * as getPageInfo from './src/getPageInfo.js';
+import * as getFreight from './src/getFreight.js';
+
 const arg = process.argv[2];
 
-if (arg === 'prices' || arg === 'images' || arg === 'pages') {
-  const getPageInfo = require('./src/getPageInfo');
-  getPageInfo.run(arg === 'pages' ? null : arg);
-  return;
+switch (arg) {
+  case 'prices':
+  case 'images':
+  case 'prices-images':
+    getPageInfo.run(arg === 'prices-images' ? null : arg);
+    break;
+  case 'freight':
+    getFreight.run();
+    break;
+  default:
+    throw new Error('Argument is required: prices, images, prices-images, freight');
 }
-
-if (arg === 'freight') {
-  const getFreight = require('./src/getFreight');
-  getFreight.run();
-  return;
-}
-
-throw new Error('Acceptable arguments are only `prices` or `images`');

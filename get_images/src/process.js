@@ -1,14 +1,12 @@
-const fs = require('fs');
-
-const PRODUCTS_URL_PATH = 'src/input/productsUrls'; // AliExpress products URLs
-const MAX_DELAY = 7000; // Max delay between subsequent requests
+import fs from 'fs';
+import { PRODUCTS_URL_PATH, MAX_DELAY } from './consts.js';
 
 const urls = fs.readFileSync(PRODUCTS_URL_PATH).toString();
 const urlQueue = urls.split('\n');
 
 let turn = 1;
 let currentTurn = 1;
-const flags = { continue: true };
+export const flags = { continue: true };
 
 const processInTurn = async (myTurn, handler, page) => {
   if (myTurn === currentTurn) {
@@ -20,9 +18,9 @@ const processInTurn = async (myTurn, handler, page) => {
       res(processInTurn(myTurn, handler, page));
     }, 500);
   });
-}
+};
 
-const processNext = async (handler, fetcher) => {
+export const processNext = async (handler, fetcher) => {
   if (!urlQueue.length || !flags.continue) {
     return;
   }
@@ -48,11 +46,6 @@ const processNext = async (handler, fetcher) => {
 
   setTimeout(
     () => processNext(handler, fetcher),
-    Math.floor(Math.random() * MAX_DELAY)
+    Math.floor(Math.random() * MAX_DELAY),
   );
-}
-
-module.exports = {
-  flags,
-  processNext
-}
+};

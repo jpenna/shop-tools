@@ -6,12 +6,14 @@
   "scripts": {
     "images": "node index images",
     "prices": "node index prices",
-    "pages": "node index pages"
+    "prices-images": "node index prices-images"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "type": "module",
   "devDependencies": {
-    "eslint": "^7.26.0"
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.2"
   }
 }

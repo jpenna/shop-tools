@@ -1,14 +1,10 @@
-const https = require('https');
-const fs = require('fs');
-
-const COOKIE_PATH = 'src/input/cookie';
-
-const SAMPLE_PAGE_PATH = 'src/samples/page.html';
-const SAMPLE_FREIGHT_PATH = 'src/samples/freight.json';
+import https from 'https';
+import fs from 'fs';
+import { COOKIE_PATH, SAMPLE_PAGE_PATH } from './consts.js';
 
 const cookie = encodeURIComponent(fs.readFileSync(COOKIE_PATH).toString());
 
-const fetchPage = url => new Promise((resolve, reject) => {
+export const fetchPage = (url) => new Promise((resolve, reject) => {
   if (!url) return;
 
   let page = '';
@@ -18,19 +14,15 @@ const fetchPage = url => new Promise((resolve, reject) => {
   }, Math.random() * 1000);
   return;
 
-  https.get(url, { headers: { cookie } }, res => {
-    res.on('data', d => {
+  https.get(url, { headers: { cookie } }, (res) => {
+    res.on('data', (d) => {
       page += d;
     });
 
     res.on('end', () => resolve(page));
-  }).on('error', error => {
+  }).on('error', (error) => {
     console.log(`Failed fetching page ${url}`);
     console.error(error);
     reject();
-  })
+  });
 });
-
-module.exports = {
-  fetchPage
-}
