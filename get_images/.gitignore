@@ -1,4 +1,6 @@
 .vscode
-cookie
-imageUrls
-productsUrls
+
+output
+input
+
+node_modules

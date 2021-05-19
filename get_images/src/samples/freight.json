@@ -1,0 +1,79 @@
+{
+    "body": {
+        "features": {
+            "abTestData": {}
+        },
+        "freightResult": [
+            {
+                "bizShowMind": {
+                    "layout": []
+                },
+                "commitDay": "90",
+                "company": "AliExpress Standard Shipping",
+                "currency": "USD",
+                "deliveryDate": "2021-06-18",
+                "deliveryDateCopy": "Estimativa de Entrega: {0}",
+                "deliveryDateDisplay": "2021-06-18",
+                "deliveryDateFormat": "18 Jun.",
+                "discount": 30,
+                "displayType": "deliveryDate",
+                "features": {},
+                "freightAmount": {
+                    "currency": "USD",
+                    "formatedAmount": "US $4.72",
+                    "value": 4.72
+                },
+                "freightFeatures": {
+                    "provider": "cainiao"
+                },
+                "freightLayout": {
+                    "displayType": "deliveryDate",
+                    "layout": [
+                        {
+                            "text": "Frete: US $4.72 (Cerca de R$ 26,64)",
+                            "type": "title"
+                        },
+                        {
+                            "text": "Para <font color='#000000'>Brazil</font> via AliExpress Standard Shipping",
+                            "type": "subtitle"
+                        },
+                        {
+                            "text": "Estimativa de entrega: <font color='#000000'>18 Jun.</font>",
+                            "type": "subtitle"
+                        },
+                        {
+                            "text": "Rastreamento Disponível",
+                            "type": "subtitle"
+                        }
+                    ],
+                    "openShippingPanel": "true"
+                },
+                "fullMailLine": false,
+                "hbaService": false,
+                "i18nMap": {},
+                "id": 0,
+                "name": "FreightItemModule",
+                "previewFreightAmount": {
+                    "currency": "BRL",
+                    "formatedAmount": "R$ 26,64",
+                    "value": 26.64
+                },
+                "sendGoodsCountry": "CN",
+                "sendGoodsCountryFullName": "China",
+                "serviceName": "CAINIAO_STANDARD",
+                "standardFreightAmount": {
+                    "currency": "USD",
+                    "formatedAmount": "US $4.72",
+                    "value": 4.72
+                },
+                "time": "31-31",
+                "tracking": true
+            }
+        ],
+        "i18nMap": {},
+        "name": "LogisticsFreightResp"
+    },
+    "code": 200,
+    "cost": 32,
+    "success": true
+}
