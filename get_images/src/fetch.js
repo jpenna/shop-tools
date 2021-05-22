@@ -41,6 +41,9 @@ export const fetchPage = (url) => {
 };
 
 export const fetchFreight = async (url, referer) => {
+  if (global[OPTION_USE_LOCAL]) {
+    throw new Error('Implement use local for freight');
+  }
   const response = await fetch(url, { referer });
   return JSON.parse(response);
 };
