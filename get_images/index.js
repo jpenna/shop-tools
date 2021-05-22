@@ -1,17 +1,20 @@
+import './setup.js';
 import * as getPageInfo from './src/getPageInfo.js';
 import * as getFreight from './src/getFreight.js';
+import * as processFields from './src/processFields.js';
 
-const arg = process.argv[2];
+const choice = process.argv[2];
 
-switch (arg) {
-  case 'prices':
-  case 'images':
-  case 'prices-images':
-    getPageInfo.run(arg === 'prices-images' ? null : arg);
+switch (choice) {
+  case 'info':
+    getPageInfo.run();
     break;
   case 'freight':
     getFreight.run();
     break;
+  case 'fields':
+    processFields.run();
+    break;
   default:
-    throw new Error('Argument is required: prices, images, prices-images, freight');
+    throw new Error('Argument is required: info, freight, fields');
 }

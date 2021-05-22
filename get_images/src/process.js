@@ -1,8 +1,12 @@
 import fs from 'fs';
-import { PRODUCTS_URL_PATH, MAX_DELAY, MAX_CONCURRENT } from './consts.js';
+import { PRODUCTS_URL_PATH, MAX_DELAY, MAX_CONCURRENT, OPTION_SELECTED_IDS, OPTION_USE_LOCAL } from './consts.js';
 
 const urls = fs.readFileSync(PRODUCTS_URL_PATH).toString();
-const urlQueue = urls.split('\n');
+let urlQueue = urls.split('\n');
+if (global[OPTION_SELECTED_IDS]) {
+  urlQueue = global[OPTION_SELECTED_IDS]
+    .map((id) => `https://pt.aliexpress.com/item/${id}.html`);
+}
 
 let turn = 1;
 let currentTurn = 1;
@@ -29,7 +33,7 @@ const processNext = async (handler, fetcher) => {
   const url = urlQueue.shift();
   if (!url) return;
 
-  console.log(`Starting ${myTurn}...`, url);
+  logger.log(`Starting ${myTurn}...`, url);
 
   try {
     const page = await fetcher(url);
@@ -37,17 +41,19 @@ const processNext = async (handler, fetcher) => {
     await processInTurn(myTurn, handler, page);
     currentTurn = myTurn + 1;
   } catch (error) {
-    console.log('\x1b[31mFailed handle URL:', url);
-    console.log('\nSave the fetched stuff and try again from where it stopped\n');
-    console.error(error);
+    logger.log('\x1b[31mFailed handle URL:', url);
+    logger.log('\nSave the fetched stuff and try again from where it stopped\n');
+    logger.error(error);
     flags.continue = false;
   }
 
-  console.log(`Done ${myTurn}:`, url);
+  logger.log(`Done ${myTurn}:`, url);
 
   setTimeout(
     () => processNext(handler, fetcher),
-    Math.floor(Math.random() * MAX_DELAY),
+    global[OPTION_USE_LOCAL]
+      ? 0
+      : Math.floor(Math.random() * MAX_DELAY),
   );
 };
 

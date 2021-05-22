@@ -4,17 +4,17 @@
   "description": "1. Copy cookies from AliExpress page (if required) 2. Create the following files:   - `productsUrls`: paste a list of AliExpress products URLs (1 per line)   - `cookie`: Copy the cookies from an AliExpress request 3. The script will get images and prices by default. To get one or the other pass an argument:    - `prices`: get only prices    - `images`: get only images 4. The output will be formatted to be pasted in Google Spreadsheets in the `imageUrls` file and `prices` file",
   "main": "getImages",
   "scripts": {
-    "images": "node index images",
-    "prices": "node index prices",
-    "prices-images": "node index prices-images",
-    "freight": "node index freight"
+    "get-info": "node index info",
+    "get-info-local": "node index info local",
+    "freight": "node index freight",
+    "fields": "node index fields"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "eslint": "^7.26.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.2"
+    "eslint-plugin-import": "^2.23.3"
   }
 }
